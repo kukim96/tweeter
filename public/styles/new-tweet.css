@@ -1,0 +1,27 @@
+.new-tweet textarea {
+  width: 100%;
+  height: 45px;
+  border: 0;
+  border-bottom: 4px solid #545149 ;
+  font-weight: 700;
+  resize: none;
+  outline: none;
+  background-color: inherit;
+  color: #545149;
+}
+/* Tweet button */
+.new-tweet button {
+  font-family: "Bungee";
+  background-color: #4056A1;
+  color: #f4f1ec;
+  outline: none;
+  padding: 6px 9px;
+  margin-top: 8px;
+}
+/* Character counter */
+.counter {
+  font-family: "Bungee";
+  color: #545149;
+  float: right;
+  margin-top: 14px;
+}
