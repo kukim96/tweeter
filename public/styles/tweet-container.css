@@ -2,6 +2,8 @@
 .tweet-container article{
   border: 4px solid #545149;
   margin: 40px 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /* hovering over tweet */
@@ -16,28 +18,35 @@
 }
 
 /* user image */
+.tweet-container div {
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .tweet-container img {
   width: 60px;
   margin: 15px;
+  display: flex;
 }
 
-.tweet-container header {
-  display: flex;
-  align-items: center;
-}
 
 /* name */
-.tweet-container header span:nth-of-type(1) {
+.tweet-container span:nth-of-type(1) {
   font-weight: 300;
+  display: flex;
+  justify-content: flex-end;
+
 }
 
 /* username */
-.tweet-container header span:nth-of-type(2) {
+.tweet-container span:nth-of-type(2) {
   color: #54514956;
   font-weight: 400;
-  margin-left: auto;
-  margin-right: 2em;
-  display: none;
+  /* margin-left: auto;
+  margin-right: 2em; */
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* alert */
@@ -59,6 +68,7 @@
 .tweet-container footer span {
   float: right;
   color: #4056a1;
+  cursor: pointer;
 }
 
 /* individual icon in footer */
