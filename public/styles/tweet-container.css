@@ -20,7 +20,7 @@
 /* user image */
 .tweet-container div {
   display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -40,7 +40,7 @@
 }
 
 /* username */
-.tweet-container span:nth-of-type(2) {
+.tweet-container div1 {
   color: #54514956;
   font-weight: 400;
   /* margin-left: auto;

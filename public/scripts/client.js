@@ -5,32 +5,53 @@
  */
 
 $(document).ready(function() {
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
+  // event listener and prevent default 
+  $('.new-tweet form').submit(function(event) {
+    event.preventDefault();
+    
+    const newTweetText = $(this).children('textarea').val();
+    const $errorMessage = $(this).children('h4');
+
+    $errorMessage.hide();
+
+    if (!newTweetText) {
+      $('.tweet-error').text('Please enter in a text!');
+      $errorMessage.slideDown(300);
+    } else if (newTweetText.length > 140) {
+      $('.tweet-error').text('Please make your tweet under 140 characters!');
+      $errorMessage.slideDown(300);
+    } else {
+      // ajax post
+      $.ajax('/tweets', {
+        data: $(this).serialize(),
+        method: 'POST',
+        success: function() {
+          loadTweets();
+          $('#tweet-text').val('');
+          $("#tweet-text").parent().find("output").text('140')
+        },
+        error: (data, text, error) => console.error(error)
+    })
+   } 
+  })
+  
+  // load new tweets
+  const loadTweets = function() {
+    $.ajax('/tweets', {
+      method: 'GET',
+      dataType: 'JSON'
+    })
+    .then(function(tweets) {
+      renderTweets(tweets)
+    })
+    .catch(function(error) {
+      console.error(error)
+    })
+  }
+  loadTweets();
 
   const renderTweets = function(tweetsDatabase) {
+    $('.tweet-container').empty();
     for (const tweet of tweetsDatabase) {
       $('.tweet-container').append(createTweetElement(tweet));
     }
@@ -42,12 +63,12 @@ $(document).ready(function() {
 
     const htmlContent = `
     <div>
-      <img src=${tweetData.user.avatars} alt="${tweetData.user.handle}-avatar">
-    <div> 
+      <img src=${tweetData.user.avatars} alt="${tweetData.user.handle}-avatar"> 
       <span>${tweetData.user.name}</span>
+    </div>
+    <div1>  
       <span>${tweetData.user.handle}</span>
-    </div>
-    </div>
+    </div1>
     <p>${tweetData.content.text}</p>
     <footer>
       ${Math.round(daysSinceTweet)} days ago
@@ -62,7 +83,5 @@ $(document).ready(function() {
   return tweetElement;
   };
 
-
-  renderTweets(data);
 });
 
