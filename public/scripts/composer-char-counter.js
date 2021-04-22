@@ -14,5 +14,5 @@ $(document).ready(function() {
     } else {
       $("#tweet-text").parent().find('output').removeClass('over-char-limit');
     }
-  })
+  });
 });

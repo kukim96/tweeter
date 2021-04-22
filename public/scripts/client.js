@@ -5,7 +5,7 @@
  */
 
 $(document).ready(function() {
-  // event listener and prevent default 
+  // event listener and prevent default
   $('.new-tweet form').submit(function(event) {
     event.preventDefault();
     
@@ -28,12 +28,12 @@ $(document).ready(function() {
         success: function() {
           loadTweets();
           $('#tweet-text').val('');
-          $("#tweet-text").parent().find("output").text('140')
+          $("#tweet-text").parent().find("output").text('140');
         },
         error: (data, text, error) => console.error(error)
-    })
-   } 
-  })
+      });
+    }
+  });
   
   // load new tweets
   const loadTweets = function() {
@@ -41,32 +41,32 @@ $(document).ready(function() {
       method: 'GET',
       dataType: 'JSON'
     })
-    .then(function(tweets) {
-      renderTweets(tweets)
-    })
-    .catch(function(error) {
-      console.error(error)
-    })
-  }
+      .then(function(tweets) {
+        renderTweets(tweets);
+      })
+      .catch(function(error) {
+        console.error(error);
+      });
+  };
   loadTweets();
 
+  // render tweets
   const renderTweets = function(tweetsDatabase) {
     $('.tweet-container').empty();
     for (const tweet of tweetsDatabase) {
       $('.tweet-container').prepend(createTweetElement(tweet));
     }
-  }
+  };
 
+  // add new tweet
   const createTweetElement = function(tweetData) {
     const $tweet = $('<article>').addClass('tweet');
     const daysSinceTweet = (Date.now() - tweetData.created_at) / 86400000;
 
     const htmlContent = `
     <div>
-    
       <img src=${tweetData.user.avatars} alt="${tweetData.user.handle}-avatar"> 
       <span>${tweetData.user.name}</span>
-    
     <div1>
       <span>${tweetData.user.handle}</span>
     </div1>  
@@ -81,8 +81,8 @@ $(document).ready(function() {
       </span>
     </footer>
   `;
-  let tweetElement = $tweet.append(htmlContent);
-  return tweetElement;
+    let tweetElement = $tweet.append(htmlContent);
+    return tweetElement;
   };
 
 });

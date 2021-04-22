@@ -52,12 +52,12 @@
     </nav>
 
     <!-- Header -->
-    <header>
-      <div>
+    <header class="profile">
+      <div style="display: flex; justify-content: center;">
           <img src="/images/profile-hex.png"> 
       </div>
       <br>
-      <div>
+      <div style="display: flex; justify-content: center;">
           <h2>Daniel Kim</h2>
       </div>
   </header>
@@ -65,7 +65,7 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <!-- <h2>Compose Tweet</h2> -->
+        <!-- Compose Tweet -->
         <form method="POST" action="/tweets">
             <label for="tweet-text">What are you humming about?</label>
             <textarea name="text" id="tweet-text"></textarea>

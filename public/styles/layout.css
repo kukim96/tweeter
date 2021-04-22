@@ -16,7 +16,7 @@ html {
 
 body {
   color: #545149;
-  background-color: #b97a15;
+  background-color: #fbf8be;
   font-size: 24px;
   font-family: 'Source Sans Pro';
 }
@@ -28,7 +28,35 @@ body {
  */
 
  main {
-   margin: 120px auto 0;
-   width: 90%;
-   padding-top: 12px;
- }
+  margin: auto;
+  width: 90%;
+  position: relative;
+  top: 120px;
+}
+
+ @media only screen and (min-width: 1024px) {
+
+  /* Header with avatar image and user name */
+  .profile {
+    width: 28%;
+    margin: 10vh 6% 0;
+    float: left;
+  }
+
+  /* Main content container */
+  main {
+    width: 50%;
+    margin: 10vh 5% 0;
+    float: right;
+  }
+
+  /* Tweet form */
+  .new-tweet form {
+    margin: 0 0 60px;
+  }
+
+  /* A single tweet */
+  .tweet {
+    margin-top: 0;
+  }
+}
