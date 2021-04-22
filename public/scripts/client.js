@@ -53,7 +53,7 @@ $(document).ready(function() {
   const renderTweets = function(tweetsDatabase) {
     $('.tweet-container').empty();
     for (const tweet of tweetsDatabase) {
-      $('.tweet-container').append(createTweetElement(tweet));
+      $('.tweet-container').prepend(createTweetElement(tweet));
     }
   }
 
@@ -63,12 +63,14 @@ $(document).ready(function() {
 
     const htmlContent = `
     <div>
+    
       <img src=${tweetData.user.avatars} alt="${tweetData.user.handle}-avatar"> 
       <span>${tweetData.user.name}</span>
-    </div>
-    <div1>  
+    
+    <div1>
       <span>${tweetData.user.handle}</span>
-    </div1>
+    </div1>  
+    </div>
     <p>${tweetData.content.text}</p>
     <footer>
       ${Math.round(daysSinceTweet)} days ago
